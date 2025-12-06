@@ -1,0 +1,17 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_FLAGS = "--legacy-peer-deps"
+
+# Next.js plugin automatically handles:
+# - Serverless functions for API routes
+# - Static page optimization
+# - Image optimization
+# - Routing and redirects
+
