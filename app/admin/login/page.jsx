@@ -42,37 +42,38 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 relative overflow-hidden">
-      {/* Animated background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 relative overflow-hidden p-4 sm:p-0">
+      {/* Animated background - Hidden on very small mobile */}
+      <div className="absolute inset-0 overflow-hidden hidden sm:block">
+        <div className="absolute top-0 left-0 w-64 sm:w-96 h-64 sm:h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div className="absolute bottom-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
       </div>
       
-      <div className="bg-white/95 backdrop-blur-lg p-8 rounded-2xl shadow-2xl w-full max-w-md relative z-10 fade-in">
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl mb-4 shadow-lg">
-            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="bg-white/95 backdrop-blur-lg p-6 sm:p-8 rounded-2xl shadow-2xl w-full max-w-md relative z-10 fade-in">
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="inline-flex items-center justify-center w-14 sm:w-16 h-14 sm:h-16 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl mb-3 sm:mb-4 shadow-lg">
+            <svg className="w-7 sm:w-8 h-7 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
           </div>
-          <h1 className="text-3xl font-extrabold text-gray-900 mb-2">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-2">
             Admin Login
           </h1>
-          <p className="text-gray-600">Access your admin dashboard</p>
+          <p className="text-sm sm:text-base text-gray-600">Access your admin dashboard</p>
         </div>
         
-        <form onSubmit={handleSubmit} className="space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
           {error && (
-            <div className="bg-red-50 border-l-4 border-red-500 text-red-700 px-4 py-3 rounded-lg flex items-center gap-2 animate-slide-in">
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <div className="bg-red-50 border-l-4 border-red-500 text-red-700 px-4 py-3 rounded-lg flex items-start gap-3 animate-slide-in text-sm sm:text-base">
+              <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
               </svg>
-              {error}
+              <span>{error}</span>
             </div>
           )}
+          
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">
               Email Address
             </label>
             <div className="relative">
@@ -85,14 +86,15 @@ export default function AdminLogin() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="input-modern pl-10"
+                className="input-modern pl-10 text-base"
                 placeholder="admin@example.com"
                 required
               />
             </div>
           </div>
+          
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">
               Password
             </label>
             <div className="relative">
@@ -105,16 +107,17 @@ export default function AdminLogin() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="input-modern pl-10"
+                className="input-modern pl-10 text-base"
                 placeholder="Enter your password"
                 required
               />
             </div>
           </div>
+          
           <button
             type="submit"
             disabled={loading}
-            className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+            className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 text-base sm:text-sm"
           >
             {loading ? (
               <span className="flex items-center justify-center gap-2">
@@ -122,20 +125,27 @@ export default function AdminLogin() {
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                Logging in...
+                <span>Logging in...</span>
               </span>
             ) : (
               "Login"
             )}
           </button>
         </form>
-        <div className="mt-6 text-center space-y-3">
-          <a href="/admin/forgot-password" className="text-sm text-blue-600 hover:text-blue-800 font-medium transition-colors block">
+        
+        <div className="mt-4 sm:mt-6 space-y-2 sm:space-y-3 text-center">
+          <a 
+            href="/admin/forgot-password" 
+            className="text-xs sm:text-sm text-blue-600 hover:text-blue-800 font-medium transition-colors block active:text-blue-900 min-h-[44px] flex items-center justify-center"
+          >
             Forgot Password?
           </a>
-          <div className="flex items-center justify-center gap-2 text-sm text-gray-600">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-xs sm:text-sm text-gray-600">
             <span>Not an admin?</span>
-            <a href="/user/login" className="text-blue-600 hover:text-blue-800 font-semibold transition-colors">
+            <a 
+              href="/user/login" 
+              className="text-blue-600 hover:text-blue-800 font-semibold transition-colors active:text-blue-900 min-h-[44px] flex items-center"
+            >
               Customer Login →
             </a>
           </div>
