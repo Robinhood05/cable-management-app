@@ -20,6 +20,7 @@ export default function ChangePassword() {
     if (!token) {
       router.push("/admin/login");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSubmit = async (e) => {

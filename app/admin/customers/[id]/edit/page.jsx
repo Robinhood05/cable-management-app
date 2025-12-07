@@ -18,6 +18,7 @@ export default function EditCustomer() {
 
   useEffect(() => {
     fetchCustomer();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchCustomer = async () => {

@@ -25,6 +25,7 @@ export default function UserDashboard() {
       return;
     }
     fetchDashboardData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchDashboardData = async () => {

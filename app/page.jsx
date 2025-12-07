@@ -17,6 +17,7 @@ export default function Home() {
     } else if (userToken) {
       router.push("/user/dashboard");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
