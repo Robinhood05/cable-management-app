@@ -82,7 +82,7 @@ export default function AdminDashboard() {
             <span className="text-blue-600">📊</span>
             Dashboard
           </h1>
-          <p className="text-gray-600">Welcome back! Here's your business overview.</p>
+          <p className="text-gray-600">Welcome back! Here&apos;s your business overview.</p>
         </div>
 
         {/* Stats Grid */}
