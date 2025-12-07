@@ -48,6 +48,9 @@ yarn-error.log*
 # OS
 Thumbs.db
 
+# Markdown Documentation
+*.md
+
 # Logs
 logs
 *.log
